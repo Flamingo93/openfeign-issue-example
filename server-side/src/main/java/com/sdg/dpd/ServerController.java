@@ -1,15 +1,23 @@
 package com.sdg.dpd;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpHeaders;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("server")
 public class ServerController {
 
-    @GetMapping("get")
-    public String getString(){
-        return "String from server";
+    @GetMapping("string")
+    public String getString(@RequestParam String string, @RequestHeader HttpHeaders headers) {
+        System.out.println("Got: " + string);
+        System.out.println("Headers:" + headers.toString());
+        return string;
+    }
+
+    @GetMapping("user")
+    public String getUserString(User user, @RequestHeader HttpHeaders headers) {
+        System.out.println("Got: " + user);
+        System.out.println("Headers:" + headers.toString());
+        return user.toString();
     }
 }
