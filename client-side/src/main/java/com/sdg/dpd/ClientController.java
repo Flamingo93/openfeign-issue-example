@@ -15,8 +15,13 @@ public class ClientController {
     }
 
     @GetMapping("get")
-    public String getString(){
+    public String getString() {
         return testClient.getString();
     }
 
+    @GetMapping("print")
+    public void decodeAndPrint() throws Exception {
+        System.out.println(GZIPCompression.isCompressed(testClient.getBytes()));
+        System.out.println(GZIPCompression.decompress(testClient.getBytes()));
+    }
 }

@@ -4,7 +4,8 @@ Steps:
 1. Run the server application
 2. Run the client application
 3. HTTP GET from http://localhost:8002/client/get
+4. HTTP GET from http://localhost:8002/client/print
 
 Phenomenon:
 1. Under normal circumstances, we will get the normal response, "String from server".
-2. But when we config `server.compression.enabled=true` in server-side and `feign.compression.response.enabled=true` in client-side at the same time, we will get garbled, like ".)��KWH+��U(N-*K-".
+2. But when we config `server.compression.enabled=true` in server-side and `feign.compression.response.enabled=true` in client-side at the same time, we will get garbled, like ".)��KWH+��U(N-*K-". And we can unzip these byte by decodeAndPrint() method.
